@@ -60,7 +60,6 @@ class WhisperHotkey:
                 # Use pre-loaded model for faster transcription
                 result = self.model.transcribe(
                     audio_array, 
-                    language="en",
                     fp16=False,  # Use FP32 for CPU
                     verbose=False  # Reduce output
                 )
@@ -80,9 +79,6 @@ class WhisperHotkey:
     def on_release(self, key):
         if key == Key.cmd_r:
             self.stop_recording()
-        elif key == Key.esc:
-            print("\n👋 Exiting...")
-            return False
     
     def insert_text_at_cursor(self, text):
         """Insert text directly at cursor position using AppleScript"""
@@ -102,8 +98,8 @@ class WhisperHotkey:
     
     def run(self):
         print("🎯 Whisper Mic Hotkey Ready!")
-        print("Press Right Command (⌘) to start recording")
-        print("Press Esc to exit")
+        print("Hold Right Command (⌘) to record, release to transcribe")
+        print("Close terminal to exit")
         print("-" * 40)
         
         # Start keyboard listener
