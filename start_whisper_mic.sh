@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /Users/canavci/whisper.cpp
+cd "$(dirname "$0")"
 python3 whisper_mic_hotkey.py
